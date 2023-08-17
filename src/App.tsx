@@ -2,15 +2,25 @@ import React from 'react';
 import './App.css';
 import Tasks from './Tasks';
 
-
 // Hi Guys!
 // Let's reinforce our current session!
 // -You have 2 arrays. You should create a new component TASKS, where you will render these arrays.
 // -Don't forget to assign types to our data.
 
+export type DataType = {
+  title: string
+  tasks: TasksType[]
+  students: Array<string>
+}
+
+export type TasksType = {
+  taskId: number
+  title: string
+  isDone: boolean
+}
 
 function App() {
-  const data1 = {
+  const data1: DataType = {
     title: 'What to do',
     tasks: [
       {taskId: 1, title: 'HTML&CSS2', isDone: true},
@@ -64,10 +74,11 @@ function App() {
       'Ralphie Hebert',
     ]
   }
-  const data2 = {
+
+  const data2: DataType = {
     title: 'What to learn',
     tasks: [
-      {taskId: 1, title: 'HTML&CSS', isDone: true},
+      {taskId: 1, title: 'Hello', isDone: true},
       {taskId: 2, title: 'JS', isDone: true}
     ],
     students: [
@@ -126,7 +137,8 @@ function App() {
 
   return (
     <div className="App">
-      <Tasks/>
+      <Tasks title={data1.title} tasks={data1.tasks} students={data1.students}/>
+      <Tasks title={data2.title} tasks={data2.tasks} students={data2.students}/>
     </div>
   );
 }
